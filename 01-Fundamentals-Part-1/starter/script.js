@@ -17,13 +17,13 @@ let jonas_matilda = "JM";
 let $function = 27;
 
 let person = "jonas";
-let PI = 3.1415;
+const PI = 3.1415;
 
-let myFirstJob = 'Coder';
+let myFirstJob = 'Coder'; // More intuitive names
 let myCurrentJob = 'Teacher';
 
-let job1 = 'programmer';
-let job2 = 'teacher';
+// let job1 = 'programmer'; // Less intuitive names
+// let job2 = 'teacher';
 
 console.log(myFirstJob);
 
@@ -97,11 +97,11 @@ const averageAge = (ageSarah + ageJonas) / 2;
 console.log(ageJonas, ageSarah, averageAge); 
 
 const firstName2 = 'Jonas';
-const job = 'developer';
+const job1 = 'developer';
 const birthYear1 = 1991;
 const year1 = 2037;
 
-const jonas = `I'm ${firstName2}, a ${year1 - birthYear1} year old ${job}!`;
+const jonas = `I'm ${firstName2}, a ${year1 - birthYear1} year old ${job1}!`;
 console.log(jonas);
 
 // Backticks can be used for any regular strings
@@ -122,10 +122,12 @@ if (age1 >= 18) {
     console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
 }
 
-const birthYear2 = 1995;
+const birthYear2 = 2005;
+let century;
 
-if (birthYear <= 2000) {
-    let century = 20;
+if (birthYear2 <= 2000) {
+    century = 20;
 } else {
-    let century = 21;
+    century = 21;
 }
+console.log(century);
