@@ -131,3 +131,21 @@ if (birthYear2 <= 2000) {
     century = 21;
 }
 console.log(century);
+
+// Type Conversion - Done manually
+const inputYear = '1991';
+console.log(inputYear);
+console.log(Number(inputYear), inputYear);
+console.log(Number(inputYear) + 18);
+
+console.log(Number('Jonas')); // -> NaN (which means an invalid number)
+console.log(typeof NaN); // -> number
+
+console.log(String(23), 23); // opposite of Number()
+
+// Type Coercion - Done automatically
+console.log('I am ' + 23 + ' years old.'); // 23 num is converted to string
+console.log('23' - '10' - 3) // -> 10 (number)
+console.log('23' + '10' + 3) // -> 23103 (string)
+console.log('23' * '2'); // -> 46 (number)
+console.log('23' / '2'); // -> 46 (number)
