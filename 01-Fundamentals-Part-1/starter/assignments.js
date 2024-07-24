@@ -6,7 +6,9 @@ const country = 'Pakistan';
 const continent = 'Asia';
 let population = 235.8;
 
-console.log(`Country: ${country}\nContinent: ${continent}\nPopulation: ${population}`)
+console.log(`Country: ${country}
+Continent: ${continent}
+Population: ${population}`)
 
 // LECTURE 2
 const isIsland = false;

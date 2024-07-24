@@ -94,4 +94,38 @@ y = z = 25 - 10 - 5;
 console.log(y, z);
 
 const averageAge = (ageSarah + ageJonas) / 2;
-console.log(ageJonas, ageSarah, averageAge);
+console.log(ageJonas, ageSarah, averageAge); 
+
+const firstName2 = 'Jonas';
+const job = 'developer';
+const birthYear1 = 1991;
+const year1 = 2037;
+
+const jonas = `I'm ${firstName2}, a ${year1 - birthYear1} year old ${job}!`;
+console.log(jonas);
+
+// Backticks can be used for any regular strings
+console.log(`Just a regular string...`);
+console.log('String with \nmultiple \nlines');
+
+// No need to add \n for newline with backticks
+console.log(`String with
+multiple
+lines`);
+
+const age1 = 19;
+
+if (age1 >= 18) {
+    console.log('Sarah can get a driving license 🚗');
+} else {
+    const yearsLeft = 18 - age1;
+    console.log(`Sarah is too young. Wait another ${yearsLeft} years :)`);
+}
+
+const birthYear2 = 1995;
+
+if (birthYear <= 2000) {
+    let century = 20;
+} else {
+    let century = 21;
+}
