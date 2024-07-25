@@ -3,6 +3,7 @@ if(js === 'amazing')
     alert('JavaScript is FUN!');
 
 console.log(40 + 8 + 23 - 10);
+
 /**********************************************************************************************************************/
 
 console.log("Jonas");
@@ -28,6 +29,7 @@ let myCurrentJob = 'Teacher';
 // let job2 = 'teacher';
 
 console.log(myFirstJob);
+
 /**********************************************************************************************************************/
 
 let javascriptIsFun = true;
@@ -48,6 +50,7 @@ console.log(typeof year);
 year = 1995;
 console.log(typeof year);
 console.log(typeof null); // -> object (null is not an object, legacy reasons for this bug)
+
 /**********************************************************************************************************************/
 
 let age = 30;
@@ -62,6 +65,7 @@ job = 'teacher';
 
 lastName = 'Henry'; // Not recommended, should always declare variables
 console.log(lastName);
+
 /**********************************************************************************************************************/
 
 // Math operators
@@ -93,6 +97,7 @@ console.log(ageSarah >= 18);
 const isFullAge = ageSarah >= 18;
 
 console.log(now - 1991 > now - 2018);
+
 /**********************************************************************************************************************/
 
 let y, z;
@@ -101,6 +106,7 @@ console.log(y, z);
 
 const averageAge = (ageSarah + ageJonas) / 2;
 console.log(ageJonas, ageSarah, averageAge); 
+
 /**********************************************************************************************************************/
 
 const firstName2 = 'Jonas';
@@ -119,6 +125,7 @@ console.log('String with \nmultiple \nlines');
 console.log(`String with
 multiple
 lines`);
+
 /**********************************************************************************************************************/
 
 const age1 = 19;
@@ -139,6 +146,7 @@ if (birthYear2 <= 2000) {
     century = 21;
 }
 console.log(century);
+
 /**********************************************************************************************************************/
 
 // Type Conversion - Done manually
@@ -165,6 +173,7 @@ console.log(n); // -> 10
 
 console.log(2 + 3 + 5 + '9'); // -> '95'
 console.log('10' - '4' - '3' - 2 + '5') // -> '15'
+
 /**********************************************************************************************************************/
 
 // 5 falsy values: 0, '', NaN, undefined, null, false
@@ -187,6 +196,7 @@ if (height) {
 } else {
     console.log('Height is UNDEFINED');
 }
+
 /**********************************************************************************************************************/
 
 const age2 = '18';
@@ -208,6 +218,7 @@ else
     console.log('Number is not 23 or 7 or 9.');
 
 if (favourite !== 23) console.log('Why not 23?');
+
 /**********************************************************************************************************************/
 
 const hasDriversLicense = true; // A
@@ -229,6 +240,7 @@ if (hasDriversLicense && hasGoodVision && !isTired)
     console.log('Sarah is able to drive!');
 else
     console.log('Someone else should drive...');
+
 /**********************************************************************************************************************/
 
 const day = 'monday';
@@ -271,6 +283,7 @@ else if (day === 'saturday' || day === 'sunday')
     console.log('Enjoy the weekend :D');
 else 
     console.log('Not a valid day!');
+
 /**********************************************************************************************************************/
 
 const age3 = 23;
@@ -288,6 +301,6 @@ else
 
 console.log(driving2);
 
-console.log(`It's ${age3 >= 18 ? 'legal 🚗' : 'illegal 🔞'} for me to drive`)
-/**********************************************************************************************************************/
+console.log(`It's ${age3 >= 18 ? 'legal 🚗' : 'illegal 🔞'} for me to drive`);
 
+/**********************************************************************************************************************/
