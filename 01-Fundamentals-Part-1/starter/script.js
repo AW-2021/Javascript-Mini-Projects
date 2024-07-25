@@ -1,4 +1,4 @@
-let js = 'amazig';
+let js = 'amazing';
 if(js === 'amazing')
     alert('JavaScript is FUN!');
 
@@ -189,25 +189,25 @@ if (height) {
 }
 /**********************************************************************************************************************/
 
-// const age2 = '18';
-// if (age2 === 18) console.log('You just became an adult! (strict equality)');
+const age2 = '18';
+if (age2 === 18) console.log('You just became an adult! (strict equality)');
 
-// if (age2 == 18) console.log('You just became an adult! (loose equality)');
+if (age2 == 18) console.log('You just became an adult! (loose equality)');
 
-// const favourite = Number(prompt('What is your favourite number?'));
-// console.log(favourite);
-// console.log(typeof favourite);
+const favourite = Number(prompt('What is your favourite number?'));
+console.log(favourite);
+console.log(typeof favourite);
 
-// if (favourite === 23)
-//     console.log('Cool! 23 is an amazing number!');
-// else if (favourite === 7) 
-//     console.log('7 is also a cool number.');
-// else if (favourite === 9) 
-//     console.log('9 is also a cool number.');
-// else 
-//     console.log('Number is not 23 or 7 or 9.');
+if (favourite === 23)
+    console.log('Cool! 23 is an amazing number!');
+else if (favourite === 7) 
+    console.log('7 is also a cool number.');
+else if (favourite === 9) 
+    console.log('9 is also a cool number.');
+else 
+    console.log('Number is not 23 or 7 or 9.');
 
-// if (favourite !== 23) console.log('Why not 23?');
+if (favourite !== 23) console.log('Why not 23?');
 /**********************************************************************************************************************/
 
 const hasDriversLicense = true; // A
@@ -289,3 +289,5 @@ else
 console.log(driving2);
 
 console.log(`It's ${age3 >= 18 ? 'legal 🚗' : 'illegal 🔞'} for me to drive`)
+/**********************************************************************************************************************/
+
