@@ -1,8 +1,10 @@
-let js = 'amazing';
+let js = 'amazig';
 if(js === 'amazing')
     alert('JavaScript is FUN!');
 
 console.log(40 + 8 + 23 - 10);
+/**********************************************************************************************************************/
+
 console.log("Jonas");
 console.log(23);
 
@@ -26,6 +28,7 @@ let myCurrentJob = 'Teacher';
 // let job2 = 'teacher';
 
 console.log(myFirstJob);
+/**********************************************************************************************************************/
 
 let javascriptIsFun = true;
 console.log(javascriptIsFun);
@@ -45,6 +48,7 @@ console.log(typeof year);
 year = 1995;
 console.log(typeof year);
 console.log(typeof null); // -> object (null is not an object, legacy reasons for this bug)
+/**********************************************************************************************************************/
 
 let age = 30;
 age = 31;
@@ -56,8 +60,9 @@ const birthYear = 1991;
 var job = 'programmer';
 job = 'teacher';
 
-lastName = 'Henry';
+lastName = 'Henry'; // Not recommended, should always declare variables
 console.log(lastName);
+/**********************************************************************************************************************/
 
 // Math operators
 const now = 2037;
@@ -88,6 +93,7 @@ console.log(ageSarah >= 18);
 const isFullAge = ageSarah >= 18;
 
 console.log(now - 1991 > now - 2018);
+/**********************************************************************************************************************/
 
 let y, z;
 y = z = 25 - 10 - 5;
@@ -95,6 +101,7 @@ console.log(y, z);
 
 const averageAge = (ageSarah + ageJonas) / 2;
 console.log(ageJonas, ageSarah, averageAge); 
+/**********************************************************************************************************************/
 
 const firstName2 = 'Jonas';
 const job1 = 'developer';
@@ -112,6 +119,7 @@ console.log('String with \nmultiple \nlines');
 console.log(`String with
 multiple
 lines`);
+/**********************************************************************************************************************/
 
 const age1 = 19;
 
@@ -131,6 +139,7 @@ if (birthYear2 <= 2000) {
     century = 21;
 }
 console.log(century);
+/**********************************************************************************************************************/
 
 // Type Conversion - Done manually
 const inputYear = '1991';
@@ -149,3 +158,74 @@ console.log('23' - '10' - 3) // -> 10 (number)
 console.log('23' + '10' + 3) // -> 23103 (string)
 console.log('23' * '2'); // -> 46 (number)
 console.log('23' / '2'); // -> 46 (number)
+
+let n = '1' + 1; // '11'
+n = n - 1; // 11 - 1 = 10
+console.log(n); // -> 10
+
+console.log(2 + 3 + 5 + '9'); // -> '95'
+console.log('10' - '4' - '3' - 2 + '5') // -> '15'
+/**********************************************************************************************************************/
+
+// 5 falsy values: 0, '', NaN, undefined, null, false
+
+console.log(Boolean(0), Boolean(undefined), Boolean(''));
+console.log(Boolean("John"), Boolean({}));
+
+const money = 0;
+
+if (money) {
+    console.log("Don't spend it all.")
+} else {
+    console.log('You should get a job!')
+}
+
+let height = 0;
+
+if (height) {
+    console.log(`YAY! Height is defined: ${height}`);
+} else {
+    console.log('Height is UNDEFINED');
+}
+/**********************************************************************************************************************/
+
+const age2 = '18';
+if (age2 === 18) console.log('You just became an adult! (strict equality)');
+
+if (age2 == 18) console.log('You just became an adult! (loose equality)');
+
+const favourite = Number(prompt('What is your favourite number?'));
+console.log(favourite);
+console.log(typeof favourite);
+
+if (favourite === 23)
+    console.log('Cool! 23 is an amazing number!');
+else if (favourite === 7) 
+    console.log('7 is also a cool number.');
+else if (favourite === 9) 
+    console.log('9 is also a cool number.');
+else 
+console.log('Number is not 23 or 7 or 9.');
+
+if (favourite !== 23) console.log('Why not 23?');
+/**********************************************************************************************************************/
+
+const hasDriversLicense = true; // A
+const hasGoodVision = true; // B
+
+console.log(hasDriversLicense && hasGoodVision); // -> false
+console.log(hasDriversLicense || hasGoodVision); // -> true
+console.log(!hasDriversLicense); // -> false
+
+// if (hasDriversLicense && hasGoodVision)
+//     console.log('Sarah is able to drive!');
+// else
+//     console.log('Someone else should drive...');
+
+const isTired = false; // C
+console.log(hasDriversLicense && hasGoodVision && isTired); // -> true
+
+if (hasDriversLicense && hasGoodVision && !isTired)
+    console.log('Sarah is able to drive!');
+else
+    console.log('Someone else should drive...');
