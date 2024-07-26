@@ -212,14 +212,14 @@ const nameKey = 'Name';
 console.log(jonas['first' + nameKey]);
 console.log(jonas['last' + nameKey]);
 
-const interestedIn = prompt(`What do you want to know about Jonas? 
-Choose between firstName, lastName, age, job or friends.`);
+// const interestedIn = prompt(`What do you want to know about Jonas? 
+// Choose between firstName, lastName, age, job or friends.`);
 
-if (jonas[interestedIn]) {
-    console.log(jonas[interestedIn]);
-} else {
-    console.log('Wrong request! Choose between firstName, lastName, age, job or friends.');
-}
+// if (jonas[interestedIn]) {
+//     console.log(jonas[interestedIn]);
+// } else {
+//     console.log('Wrong request! Choose between firstName, lastName, age, job or friends.');
+// }
 
 jonas.location = 'Denmark';
 jonas['twitter handle'] = '@jonashenry';
@@ -228,6 +228,50 @@ console.log(jonas);
 // CHALLENGE
 // Dynamically write the sentence: Jonas has 3 friends, and his best friend is called Michael
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+
+/**********************************************************************************************************************/
+
+const alice = {
+    firstName: 'Alice',
+    lastName: 'Brown',
+    birthYear: 1996,
+    job: 'developer',
+    friends: ['Michael', 'Peter', 'Steven'],
+    hasDriversLicense: true,
+    
+    // calcAge: function(birthYear) {
+    //     return 2037 - birthYear;
+    // }
+        
+    // calcAge: function () {
+    //     console.log(this); // -> {} Object
+    //     return 2037 - this.birthYear;
+    // }
+            
+    calcAge: function () {
+        this.age = 2037 - this.birthYear;
+        return this.age;
+    },
+
+    getSummary: function() {
+        return `${this.firstName} is a ${this.calcAge()}-year old ${this.job}, and she has ${this.hasDriversLicense ? 'a' : 'no'} driver's license.`;
+    }
+}
+        
+// Identical to writing a regular function expression
+/*const calcAge = function (birthYear) {
+    return 2037 - birthYear;
+}*/
+console.log(alice);
+           
+// console.log(alice['calcAge'](1996));
+
+console.log(alice.calcAge());
+console.log(alice.age);
+           
+// CHALLENGE
+// Dynamically write the sentence: "Alice is a 41-year old developer, and she has a driver's license."
+console.log(alice.getSummary());
 
 /**********************************************************************************************************************/
 
