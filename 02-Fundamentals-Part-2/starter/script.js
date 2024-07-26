@@ -105,3 +105,81 @@ console.log(yearsUntilRetirement2(1960, 'Mike'));
 
 /**********************************************************************************************************************/
 
+// ARRAYS
+const friend1 = 'Michael';
+const friend2 = 'Steven';
+const friend3 = 'Peter';
+
+const friends = ['Michael', 'Steven', 'Peter'];
+console.log(friends);
+
+const years = new Array(1991, 1984, 2003, 2020);
+
+console.log(friends[0]);
+console.log(friends[1]);
+console.log(friends.length);
+console.log(friends[friends.length-1]);
+
+friends[2] = 'Jay';
+console.log(friends);
+
+// Cannot replace the entire array
+// friends = ['Bob', 'Alice']; // ERROR
+
+// Arrays can have elements with different data types
+const firstName = 'John';
+const john = [firstName, 'Henderson', 2037 - 1999, 'teacher', friends];
+console.log(john);
+console.log(john.length);
+
+// Exercise
+const calcAge5 = function (birthYear) {
+    return 2037 - birthYear;
+}
+
+const years1 = [1990, 1967, 2002, 2010, 2018];
+
+const age4 = calcAge5(years1[0]);
+const age5 = calcAge5(years1[1]);
+const age6 = calcAge5(years1[years1.length - 1]);
+
+console.log(age4, age5, age6);
+
+const ages = [calcAge5(years1[0]), calcAge5(years1[1]), calcAge5(years1[years1.length - 1])];
+console.log(ages);
+
+/**********************************************************************************************************************/
+
+const friendsArr = ['Michael', 'Steven', 'Peter'];
+
+// Add elements
+const newLength = friendsArr.push('Alice');
+console.log(friendsArr);
+console.log(newLength);
+
+friendsArr.unshift('John');
+console.log(friendsArr);
+
+// Remove elements
+friendsArr.pop(); // Last el
+const popped = friendsArr.pop();
+console.log(popped);
+console.log(friendsArr);
+
+friendsArr.shift(); // First el
+console.log(friendsArr);
+
+console.log(friendsArr.indexOf('Steven')); // -> 1
+console.log(friendsArr.indexOf('Bob')); // -> -1
+
+friendsArr.push(23);
+console.log(friendsArr.includes('Steven'));
+console.log(friendsArr.includes('Bob'));
+console.log(friendsArr.includes(23));
+
+if (friendsArr.includes('Steven')) {
+    console.log('You have a friend called Steven');
+}
+
+/**********************************************************************************************************************/
+
