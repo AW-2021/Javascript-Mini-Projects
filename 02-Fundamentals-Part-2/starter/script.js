@@ -275,3 +275,32 @@ console.log(alice.getSummary());
 
 /**********************************************************************************************************************/
 
+// FOR LOOPS
+for(let rep = 1; rep <= 20; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+}
+
+/**********************************************************************************************************************/
+
+const johnArray = [
+    'John',
+    'Henderson',
+    2037 - 1999,
+    'programmer',
+    ['Michael', 'Peter', 'Steven'],
+    true
+];
+
+// Initializing an empty array
+const types = [];
+
+for (let i = 0; i < johnArray.length; i++) {
+    // Reading from johnArray
+    console.log(johnArray[i], typeof johnArray[i]);
+
+    // Filling types array
+    // types[i] = typeof johnArray[i]; // METHOD 1
+    types.push(typeof johnArray[i]); // METHOD 2
+}
+
+console.log(types);
