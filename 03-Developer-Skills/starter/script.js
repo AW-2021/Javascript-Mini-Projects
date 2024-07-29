@@ -72,7 +72,6 @@ const calcTempAmplitudeNew = function (temps1, temps2) {
   let min = tempArr[0];
   let max = tempArr[0];
 
-  // METHOD 1
   for (let i = 0; i < tempArr.length; i++) {
     let current = tempArr[i];
 
@@ -89,5 +88,56 @@ const calcTempAmplitudeNew = function (temps1, temps2) {
 console.log(
   calcTempAmplitudeNew(temperatures, [4, 19, -8, 0, 'error', -24, 1])
 );
+
+/**********************************************************************************************************************/
+
+const measureKelvin = function () {
+  const measurement = {
+    type: 'temp',
+    unit: 'celsius',
+    value: prompt('Degrees celsius: '), // Prompt always returns a string
+    //value: 10,
+  };
+
+  // B) FIND BUG
+  console.log(measurement);
+  console.table(measurement);
+  console.log(measurement.value);
+  //console.warn(measurement.value);
+  //console.error(measurement.value);
+
+  // C) FIX BUG
+  const kelvin = Number(measurement.value) + 273;
+  return kelvin;
+};
+
+// A) IDENTIFY BUG
+console.log(measureKelvin());
+
+// Using a debugger
+const calcTempAmplitudeBug = function (temps1, temps2) {
+  const tempArr = temps1.concat(temps2);
+  console.log(tempArr);
+
+  let min = 0;
+  let max = 0;
+
+  for (let i = 0; i < tempArr.length; i++) {
+    let current = tempArr[i];
+
+    if (typeof current !== 'number') continue;
+
+    //debugger;
+    if (current < min) min = current;
+    if (current > max) max = current;
+  }
+
+  console.log(min, max);
+  return max - min;
+};
+
+const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
+// A) IDENTIFY BUG
+console.log(amplitudeBug);
 
 /**********************************************************************************************************************/
