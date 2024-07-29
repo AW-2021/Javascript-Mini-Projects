@@ -304,3 +304,72 @@ for (let i = 0; i < johnArray.length; i++) {
 }
 
 console.log(types);
+
+const yearsArr = [1991, 2007, 1969, 2020];
+const agesArr = [];
+
+for (let i = 0; i < yearsArr.length; i++) {
+    agesArr.push(2037 - yearsArr[i]);
+}
+console.log(agesArr);
+
+// continue and break keywords for loops
+console.log('---ONLY STRINGS---');
+for (let i = 0; i < johnArray.length; i++) {
+    if (typeof johnArray[i] !== 'string') continue;
+
+    console.log(johnArray[i], typeof johnArray[i]);
+}
+
+console.log('---BREAK WITH NUMBER---');
+for (let i = 0; i < johnArray.length; i++) {
+    if (typeof johnArray[i] == 'number') break;
+
+    console.log(johnArray[i], typeof johnArray[i]);
+}
+
+/**********************************************************************************************************************/
+
+const peterArray = [
+    'Peter',
+    'Brown',
+    2037 - 2002,
+    'teacher',
+    ['Michael', 'Jonas', 'Alice']
+];
+
+// 0, 1, 2 ... 4 -> Forward looping
+// 4, 3, 2 ... 0 -> Backward looping
+for (let i = peterArray.length - 1; i >= 0; i--) {
+    console.log(i, peterArray[i]);
+}
+
+for (let exercise = 1; exercise < 4; exercise++) {
+    console.log(`-------- Starting exercise ${exercise}`);
+
+    for (let rep = 1; rep < 6; rep++) {
+        console.log(`Exercise ${exercise}: Lifting weights repetition ${rep} 🏋️‍♀️`);
+    }
+}
+
+/**********************************************************************************************************************/
+
+for (let rep = 1; rep <= 10; rep++) {
+    console.log(`Lifting weights repetition ${rep} 🏋️‍♀️`);
+}
+
+// WHILE LOOPS
+let rep = 1;
+while (rep <= 10) {
+    console.log(`WHILE: Lifting weights repetition ${rep} 🏋️`);
+    rep++;
+}
+
+let dice = Math.trunc(Math.random() * 6) + 1;
+
+while (dice !== 6) {
+    console.log(`You rolled a ${dice}`);
+    dice = Math.trunc(Math.random() * 6) + 1;
+    if (dice === 6)
+        console.log('The loop is about to end...');
+}
