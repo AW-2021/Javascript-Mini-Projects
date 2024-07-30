@@ -95,8 +95,8 @@ const measureKelvin = function () {
   const measurement = {
     type: 'temp',
     unit: 'celsius',
-    value: prompt('Degrees celsius: '), // Prompt always returns a string
-    //value: 10,
+    //value: prompt('Degrees celsius: '), // Prompt always returns a string
+    value: 10,
   };
 
   // B) FIND BUG
@@ -127,7 +127,7 @@ const calcTempAmplitudeBug = function (temps1, temps2) {
 
     if (typeof current !== 'number') continue;
 
-    //debugger;
+    // debugger;
     if (current < min) min = current;
     if (current > max) max = current;
   }
@@ -139,5 +139,38 @@ const calcTempAmplitudeBug = function (temps1, temps2) {
 const amplitudeBug = calcTempAmplitudeBug([3, 5, 1], [9, 4, 5]);
 // A) IDENTIFY BUG
 console.log(amplitudeBug);
+
+/**********************************************************************************************************************/
+
+// CODING CHALLENGE #1
+
+/*
+Given an array of forecasted maximum temperatures, the thermometer displays a string with these temperatures.
+
+Example: [17, 21, 23] will print "... 17ºC in 1 days ... 21ºC in 2 days ... 23ºC in 3 days ..."
+
+Create a function 'printForecast' which takes in an array 'arr' and logs a string like the above to the console.
+
+Use the problem-solving framework: Understand the problem and break it up into sub-problems!
+
+TEST DATA 1: [17, 21, 23]
+TEST DATA 2: [12, 5, -5, 0, 4]
+*/
+
+const data1 = [17, 21, 23];
+const data2 = [12, 5, -5, 0, 4];
+
+const printForecast = function (arr) {
+  let string = '';
+
+  for (let i = 0; i < arr.length; i++) {
+    string += `... ${arr[i]}°C in ${i + 1} days `;
+  }
+
+  console.log(string + '...');
+};
+
+printForecast(data1);
+printForecast(data2);
 
 /**********************************************************************************************************************/
