@@ -5,6 +5,7 @@ let score = 20;
 let highScore = 0;
 console.log(secretNumber);
 
+// Function displays text in '.message' paragraph
 const displayMessage = function (message) {
   document.querySelector('.message').textContent = message;
 };
@@ -13,6 +14,7 @@ const correctGuess = function () {
   displayMessage('🎉 Correct Number!');
   document.querySelector('.number').textContent = secretNumber;
 
+  // Setting body and .number styles
   document.querySelector('body').style.backgroundColor = '#60b347';
   document.querySelector('.number').style.width = '30rem';
   document.querySelector('.number').style.backgroundColor = 'white';
@@ -35,6 +37,7 @@ const wrongGuess = function (guess) {
     displayMessage('☠️ You lost the game!');
     document.querySelector('.score').textContent = 0;
 
+    // Setting body and .number styles
     document.querySelector('body').style.backgroundColor = 'maroon';
     document.querySelector('.number').style.backgroundColor = 'darkgrey';
   }
