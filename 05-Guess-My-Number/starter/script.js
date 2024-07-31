@@ -14,7 +14,6 @@ let secretNumber = Math.floor(Math.random() * 20) + 1; // Can use Math.trunc as 
 let score = 20;
 let highScore = 0;
 console.log(secretNumber);
-document.querySelector('.highscore').textContent = highScore;
 
 document.querySelector('.check').addEventListener('click', function () {
   const guess = Number(document.querySelector('.guess').value);
