@@ -4,21 +4,33 @@
 const newBtn = document.querySelector('.btn--new');
 const rollBtn = document.querySelector('.btn--roll');
 const holdBtn = document.querySelector('.btn--hold');
-const dice = document.querySelector('.dice');
+const diceEl = document.querySelector('.dice');
 const player1 = document.querySelector('.player--0');
 const player2 = document.querySelector('.player--1');
 let currentPlayer = document.querySelector('.player--active');
 
+// STARTING CONDITIONS
 let currentScore = 0;
 let totalScore = 0;
-let random;
+// Hiding the dice at the start of the game
+diceEl.classList.add('hidden');
 
 const rollDice = function () {
-  random = Math.floor(Math.random() * 6) + 1;
-  console.log(random);
-  dice.setAttribute('src', `dice-${random}.png`);
+  // Generating a random dice roll
+  let random = Math.floor(Math.random() * 6) + 1;
 
-  if (random === 1) {
+  // Display dice
+  diceEl.classList.remove('hidden');
+  diceEl.setAttribute('src', `dice-${random}.png`);
+
+  // Check number rolled on dice
+  if (random !== 1) {
+    // Add dice to current (player's) score
+    currentScore += random;
+    currentPlayer.querySelector('.current-score').textContent = currentScore;
+  }
+  // Switch player when dice rolls 1
+  else {
     player1.classList.toggle('player--active');
     player2.classList.toggle('player--active');
 
@@ -31,9 +43,6 @@ const rollDice = function () {
       currentPlayer.querySelector('.current-score').textContent
     );
     totalScore = Number(currentPlayer.querySelector('.score').textContent);
-  } else {
-    currentScore += random;
-    currentPlayer.querySelector('.current-score').textContent = currentScore;
   }
 };
 
@@ -64,8 +73,11 @@ const reset = function () {
   currentPlayer = player1;
   player1.classList.add('player--active');
   player2.classList.remove('player--active');
+
+  diceEl.classList.remove('hidden');
 };
 
+// Roll Dice functionality
 rollBtn.addEventListener('click', rollDice);
 holdBtn.addEventListener('click', holdScore);
 newBtn.addEventListener('click', reset);
