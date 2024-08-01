@@ -40,4 +40,17 @@ const rollDice = function () {
   }
 };
 
+const playerWins = function () {
+  currentPlayer.classList.add('player--winner');
+};
+
+const holdScore = function () {
+  totalScore = currentScore;
+  currentPlayer.querySelector('.score').textContent = totalScore;
+  if (totalScore >= 100) {
+    playerWins();
+  }
+};
+
 rollBtn.addEventListener('click', rollDice);
+holdBtn.addEventListener('click', holdScore);
