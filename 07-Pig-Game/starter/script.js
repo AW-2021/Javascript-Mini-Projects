@@ -52,5 +52,23 @@ const holdScore = function () {
   }
 };
 
+const reset = function () {
+  currentScore = 0;
+  totalScore = 0;
+
+  player1.querySelector('.current-score').textContent = 0;
+  player2.querySelector('.current-score').textContent = 0;
+
+  player1.querySelector('.score').textContent = 0;
+  player2.querySelector('.score').textContent = 0;
+
+  currentPlayer.classList.remove('player--winner');
+
+  currentPlayer = player1;
+  player1.classList.add('player--active');
+  player2.classList.remove('player--active');
+};
+
 rollBtn.addEventListener('click', rollDice);
 holdBtn.addEventListener('click', holdScore);
+newBtn.addEventListener('click', reset);
