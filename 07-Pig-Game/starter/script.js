@@ -10,10 +10,22 @@ const player2 = document.querySelector('.player--1');
 let currentPlayer = document.querySelector('.player--active');
 
 // STARTING CONDITIONS
+const scores = [0, 0];
 let currentScore = 0;
 let totalScore = 0;
+let activePlayer = 0;
 // Hiding the dice at the start of the game
 diceEl.classList.add('hidden');
+
+const switchPlayer = function () {
+  currentScore = 0;
+  document.getElementById(`current--${activePlayer}`).textContent =
+    currentScore;
+  activePlayer = activePlayer === 0 ? 1 : 0;
+
+  player1.classList.toggle('player--active');
+  player2.classList.toggle('player--active');
+};
 
 const rollDice = function () {
   // Generating a random dice roll
@@ -27,22 +39,25 @@ const rollDice = function () {
   if (random !== 1) {
     // Add dice to current (player's) score
     currentScore += random;
-    currentPlayer.querySelector('.current-score').textContent = currentScore;
+    document.getElementById(`current--${activePlayer}`).textContent =
+      currentScore;
+    // currentPlayer.querySelector('.current-score').textContent = currentScore;
   }
   // Switch player when dice rolls 1
   else {
-    player1.classList.toggle('player--active');
-    player2.classList.toggle('player--active');
+    // player1.classList.toggle('player--active');
+    // player2.classList.toggle('player--active');
+    // if (currentPlayer === player1) {
+    //   currentPlayer = player2;
+    // } else {
+    //   currentPlayer = player1;
+    // }
+    // currentScore = Number(
+    //   currentPlayer.querySelector('.current-score').textContent
+    // );
+    // totalScore = Number(currentPlayer.querySelector('.score').textContent);
 
-    if (currentPlayer === player1) {
-      currentPlayer = player2;
-    } else {
-      currentPlayer = player1;
-    }
-    currentScore = Number(
-      currentPlayer.querySelector('.current-score').textContent
-    );
-    totalScore = Number(currentPlayer.querySelector('.score').textContent);
+    switchPlayer();
   }
 };
 
@@ -51,11 +66,19 @@ const playerWins = function () {
 };
 
 const holdScore = function () {
-  totalScore = currentScore;
-  currentPlayer.querySelector('.score').textContent = totalScore;
-  if (totalScore >= 100) {
+  // Add current score to active player's score
+  scores[activePlayer] += currentScore;
+  document.getElementById(`score--${activePlayer}`).textContent =
+    scores[activePlayer];
+
+  // Checking if player's score is >= 100
+  if (scores[activePlayer] >= 100) {
+    // Finish game
     playerWins();
   }
+
+  // Switch to next player
+  switchPlayer();
 };
 
 const reset = function () {
