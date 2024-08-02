@@ -160,10 +160,10 @@ main {
   transform: translateX(-50%);
   height: 10rem;
   box-shadow: 0 2rem 5rem rgba(0, 0, 0, 0.3);
-  border-right: 2px solid rgb(97, 97, 97);
-  border-bottom: 2px solid rgb(97, 97, 97);
-  border-left: 1px solid rgb(97, 97, 97);
-  border-top: 1px solid rgb(97, 97, 97);
+  border-right: 3px solid rgb(83, 83, 83);
+  border-bottom: 3px solid rgb(83, 83, 83);
+  border-left: 1px solid rgb(83, 83, 83);
+  border-top: 1px solid rgb(83, 83, 83);
 }
 
 .player--winner {
