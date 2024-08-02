@@ -8,13 +8,15 @@ const diceEl = document.querySelector('.dice');
 const player1 = document.querySelector('.player--0');
 const player2 = document.querySelector('.player--1');
 
-// STARTING CONDITIONS
-const scores = [0, 0];
-let currentScore = 0;
-let activePlayer = 0;
-let playing = true;
+let scores, currentScore, activePlayer, playing;
 
+// STARTING CONDITIONS
 const init = function () {
+  scores = [0, 0];
+  currentScore = 0;
+  activePlayer = 0;
+  playing = true;
+
   player1.querySelector('.score').textContent = 0;
   player2.querySelector('.score').textContent = 0;
 
@@ -84,7 +86,7 @@ const holdScore = function () {
       scores[activePlayer];
 
     // Checking if player's score is >= 100
-    if (scores[activePlayer] >= 20) {
+    if (scores[activePlayer] >= 100) {
       // Finish game
       playerWins();
     } else {
