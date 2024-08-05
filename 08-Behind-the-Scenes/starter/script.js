@@ -43,3 +43,49 @@ function calcAge(birthYear) {
 // firstName has GLOBAL SCOPE
 const firstName = 'Amy';
 calcAge(1995);
+
+/**********************************************************************************************************************/
+
+// VARIABLE HOISTING
+console.log(myName); // var variables always hoisted, initialized to 'undefined'
+// console.log(job); // TDZ for let variable
+// console.log(year);  // TDZ for const variable
+
+var myName = 'Amy';
+let job = 'developer';
+const year = '2001';
+
+// FUNCTION HOISTING
+console.log(addDecl(2, 3)); // Hoisting done for function declaration
+// console.log(addExpr(2, 3)); // No hoisting for function expression declared with const
+// console.log(addArrow(2, 3)); // No hoisting for arrow function declared with const
+
+function addDecl(a, b) {
+  return a + b;
+}
+
+const addExpr = function (a, b) {
+  return a, b;
+};
+
+var addArrow = (a, b) => a + b;
+
+// EXAMPLE (OF PITFALLS OF HOISTING)
+console.log(numProducts);
+if (!numProducts) deleteShopingCart();
+
+var numProducts = 10;
+
+function deleteShopingCart() {
+  console.log('All products deleted!');
+}
+
+var x = 1; // Creates property on window object
+let y = 2; // Does not create property on window object
+const z = 3; // "
+
+console.log(window);
+
+console.log(x === window.x);
+console.log(y === window.y);
+console.log(z === window.z);
