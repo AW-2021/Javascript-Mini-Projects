@@ -212,3 +212,45 @@ console.log('Me: ', me);
 console.log('Friend: ', friend);
 
 /**********************************************************************************************************************/
+
+// PRIMITIVE TYPES
+let lastName = 'William';
+let oldLastName = lastName;
+lastName = 'David';
+console.log(lastName, oldLastName); // -> David Williams
+
+// REFERENCE TYPES
+const jess = {
+  firstName: 'Jess',
+  lastName: 'Williams',
+  age: 27,
+};
+
+// Copying objects
+const marriedJess = jess; // Reference copy (Points to same address in heap)
+marriedJess.lastName = 'Gabriel';
+console.log('Before marriage: ', jess);
+console.log('After marriage: ', marriedJess);
+
+const jess2 = {
+  firstName: 'Jess',
+  lastName: 'Williams',
+  age: 27,
+  family: ['Alice', 'Bob'],
+};
+
+const jessicaCopy = { ...jess2 }; // Pass-by-value copy (Shallow copy)
+jessicaCopy.lastName = 'A. Gabriel';
+jessicaCopy.age = 29;
+console.log('Before marriage: ', jess2);
+console.log('After 2 marriage yrs: ', jessicaCopy);
+
+const jessicaCopy2 = Object.assign({}, jess2); // Pass-by-value copy (Shallow copy)
+jessicaCopy2.lastName = 'Davis';
+console.log('Before marriage: ', jess2);
+console.log('After marriage: ', jessicaCopy2);
+
+jessicaCopy2.family.push('Gabriel');
+jessicaCopy2.family.push('Mary');
+console.log('Before marriage: ', jess2);
+console.log('After marriage: ', jessicaCopy2);
