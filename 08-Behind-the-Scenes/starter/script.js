@@ -89,3 +89,47 @@ console.log(window);
 console.log(x === window.x);
 console.log(y === window.y);
 console.log(z === window.z);
+
+/**********************************************************************************************************************/
+
+// THIS KEYWORD
+console.log(this); // -> Window {...} (Global object)
+
+// Function expressions get their own 'this' keyword
+const calcAge2 = function (birthYear) {
+  console.log(2037 - birthYear);
+  console.log(this); // -> undefined
+};
+
+// Arrow funcion does not get its own this keyword, so uses
+// 'this' keyowrd of parent scope (here that is global scope)
+const calcAgeArrow = birthYear => {
+  console.log(2037 - birthYear);
+  console.log(this); // -> Window {...} (Global object)
+};
+
+calcAge2(1999);
+calcAgeArrow(2001);
+
+const amy = {
+  year: 1991,
+  calcAge: function () {
+    console.log(2037 - this.year);
+    console.log(this);
+  },
+};
+
+amy.calcAge(); // -> 2037 - this.year = 2037 - 1991 = 46
+
+const matilda = {
+  year: 2017,
+};
+
+matilda.calcAge = amy.calcAge; // Method Borrowing
+// console.log(matilda);
+matilda.calcAge(); // -> 2037 - this.year = 2037 - 2017 = 20
+
+const f = amy.calcAge;
+// f(); // -> ERROR
+
+/**********************************************************************************************************************/
