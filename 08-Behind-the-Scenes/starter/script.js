@@ -133,3 +133,59 @@ const f = amy.calcAge;
 // f(); // -> ERROR
 
 /**********************************************************************************************************************/
+
+// REGULAR FUNCTION VS. ARROW FUNCTIONS IN OBJECTS
+// var fName = 'Matilda';
+
+const john = {
+  fName: 'John',
+  year: 1996,
+  calcAge: function () {
+    console.log(this);
+    console.log(2037 - this.year);
+
+    // Solution 1
+    /*const self = this; // Allows regular functions inside methods to access the object
+    const isMillenial = function () {
+      // console.log(this); // -> undefined
+      // console.log(this.year >= 1981 && this.year <= 1996);
+      console.log(self);
+      console.log('ANSWER: ' + (self.year >= 1981 && self.year <= 1996));
+    };
+
+    isMillenial(); // -> ERROR (Considered as a regular function) */
+
+    // Solution 2 (ES6+)
+    const isMillenial = () => {
+      console.log(this);
+      console.log('ANSWER 2: ' + (this.year >= 1981 && this.year <= 1996));
+    };
+
+    isMillenial(); // -> ERROR (Considered as a regular function)
+  },
+
+  greet: () => {
+    console.log(this);
+    console.log(`Hey, ${this.fName}!`);
+  },
+};
+
+john.calcAge();
+john.greet(); // -> Hey, undefined! (Parent Scope: GLOBAL Scope)
+console.log(this.fName); // -> undefined
+
+// ARGUMENTS KEYWORD
+const addExpr2 = function (a, b) {
+  console.log(arguments);
+  return a + b;
+};
+addExpr2(7, 3);
+addExpr2(7, 3, 2, 5, 6);
+
+const addArrow2 = (a, b) => {
+  console.log(arguments); // -> ERROR
+  return a + b;
+};
+// addArrow2(3, 5);
+
+/**********************************************************************************************************************/
