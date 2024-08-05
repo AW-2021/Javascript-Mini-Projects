@@ -189,3 +189,26 @@ const addArrow2 = (a, b) => {
 // addArrow2(3, 5);
 
 /**********************************************************************************************************************/
+
+let age = 30;
+let oldAge = age;
+age = 32;
+console.log(age); // -> 32
+console.log(oldAge); // -> 30
+
+const me = {
+  name: 'Amy',
+  age: 26,
+};
+
+const friend = me;
+
+console.log(me);
+console.log(friend);
+
+friend.age = 22;
+
+console.log('Me: ', me);
+console.log('Friend: ', friend);
+
+/**********************************************************************************************************************/
