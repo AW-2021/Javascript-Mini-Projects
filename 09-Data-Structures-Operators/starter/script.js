@@ -30,6 +30,19 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+  // Key names in passed object must match, but order does not have to match
+  orderDelivery: function ({
+    time = '20:00',
+    mainIndex = 0,
+    starterIndex = 1,
+    address,
+  }) {
+    console.log(
+      `Order received! ${this.order(mainIndex, starterIndex)[0]} and ${
+        this.order(mainIndex, starterIndex)[1]
+      } will be delivered to ${address} at ${time}`
+    );
+  },
 };
 
 const arr = [2, 4, 6];
@@ -69,3 +82,49 @@ console.log(i, j, k);
 // Default values
 const [p = 1, q = 1, r = 1] = [8];
 console.log(p, q, r);
+
+/**********************************************************************************************************************/
+
+// DESTRUCTURING OBJECTS
+const { name, openingHours, categories } = restaurant;
+console.log(name, openingHours, categories);
+
+// Giving new variable names to destructured properties
+const {
+  name: restaurantName,
+  openingHours: hours,
+  categories: tags,
+} = restaurant;
+console.log(restaurantName, hours, tags);
+
+// Default values
+const { menu = [], starterMenu: starters = [] } = restaurant;
+console.log(menu, starters);
+
+// Mutating variables
+let d = 111;
+let e = 999;
+const obj = { d: 24, e: 8, f: 14 };
+
+({ d, e } = obj);
+console.log(d, e);
+
+// Nested Objects
+const {
+  fri: { open: o, close: cl },
+} = openingHours;
+console.log(o, cl);
+
+restaurant.orderDelivery({
+  time: '23:30',
+  address: 'Via de Sole, 21',
+  mainIndex: 2,
+  starterIndex: 2,
+});
+
+restaurant.orderDelivery({
+  address: 'Via de Sole, 21',
+  starterIndex: 2,
+});
+
+/**********************************************************************************************************************/
