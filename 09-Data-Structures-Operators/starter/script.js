@@ -111,9 +111,9 @@ console.log(d, e);
 
 // Nested Objects
 const {
-  fri: { open: o, close: cl },
+  fri: { open: o, close },
 } = openingHours;
-console.log(o, cl);
+console.log(o, close);
 
 restaurant.orderDelivery({
   time: '23:30',
@@ -128,3 +128,37 @@ restaurant.orderDelivery({
 });
 
 /**********************************************************************************************************************/
+
+// SPREAD OPERATOR (...)
+const ogArr = [7, 8, 9];
+const badNewArr = [1, 2, ogArr[0], ogArr[1], ogArr[2]];
+
+const newArr = [1, 2, ...ogArr];
+console.log(newArr);
+
+console.log(...newArr);
+
+const newMenu = [...restaurant.mainMenu, 'Lasagna', 'Gnocci'];
+console.log(newMenu);
+
+// Copy array
+const mainMenuCopy = [...restaurant.mainMenu];
+console.log(restaurant.mainMenu);
+console.log(mainMenuCopy);
+
+mainMenuCopy.pop();
+mainMenuCopy.pop();
+
+console.log(mainMenuCopy);
+console.log(restaurant.mainMenu);
+
+// Join 2 arrays
+const combinedMenu = [...restaurant.starterMenu, ...restaurant.mainMenu];
+console.log(combinedMenu);
+
+// Iterables: arrays, strings, maps, sets, NOT objects
+const str = 'Jonas';
+const letters = [...str, ' ', 'S.'];
+console.log(letters);
+console.log(...str);
+// console.log(`${...str} Henry`); // Cannot use spread operator within template literals
