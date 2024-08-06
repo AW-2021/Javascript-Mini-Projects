@@ -1,3 +1,8 @@
+/*********************  ASSIGNMENTS  ***********************/
+
+/******* Data Structures, Modern Operators and Strings *******/
+
+// TEST DATA
 const books = [
   {
     title: 'Algorithms',
@@ -222,3 +227,90 @@ const books = [
     highlighted: true,
   },
 ];
+
+// ASSIGNMENT 1.1
+const [firstBook, secondBook] = books;
+console.log(firstBook, secondBook);
+
+// ASSIGNMENT 1.2
+const [, , thirdBook] = books;
+console.log(thirdBook);
+
+// ASSIGNMENT 1.3
+const ratings = [
+  ['rating', 4.19],
+  ['ratingsCount', 144584],
+];
+
+const [[, rating], [, ratingsCount]] = ratings;
+console.log(rating, ratingsCount);
+
+// ASSIGNMENT 1.4
+const ratingStars = [63405, 1808];
+const [fiveStarRatings, oneStarRatings, threeStarRatings = 0] = ratingStars;
+console.log(fiveStarRatings, oneStarRatings, threeStarRatings);
+
+// ASSIGNMENT 2.1
+// const { title, author, ISBN } = books[0];
+// console.log(title, author, ISBN);
+
+// ASSIGNMENT 2.2
+const { keywords: tags } = books[0];
+console.log(tags);
+
+// ASSIGNMENT 2.3
+const { language, programmingLanguage = 'unknown' } = books[6];
+console.log(language, programmingLanguage);
+
+// ASSIGNMENT 2.4
+const { title: bookTitle, author: bookAuthor } = books[0];
+console.log(bookTitle, bookAuthor);
+
+// ASSIGNMENT 2.5
+const {
+  thirdParty: {
+    goodreads: { rating: bookRating },
+  },
+} = books[0];
+console.log(bookRating);
+
+// ASSIGNMENT 2.6
+const printBookInfo = function ({ title, author, year = 'year unknown' }) {
+  console.log(`${title} by ${author}, ${year}`);
+};
+
+printBookInfo({
+  title: 'Algorithms',
+  author: 'Robert Sedgewick',
+  year: '2011',
+});
+
+// ASSIGNMENT 3.1
+const bookAuthors = [...books[0].author, ...books[1].author];
+console.log(bookAuthors);
+
+// ASSIGNMENT 3.2
+const spellWord = function (str) {
+  console.log(...str);
+};
+
+spellWord('JavaScript');
+
+// ASSIGNMENT 4.1
+const {
+  keywords: [mainKeyword, ...rest],
+} = books[0];
+
+// const [mainKeyword, ...rest] = books[0].keywords;
+console.log(mainKeyword, rest);
+
+// ASSIGNMENT 4.2
+const { publisher: bookPublisher, ...restOfTheBook } = books[1];
+console.log(bookPublisher, restOfTheBook);
+
+// ASSIGNMENT 4.3
+const printBookAuthorsCount = function (title, ...authors) {
+  console.log(`The book "${title}" has ${authors.length} authors`);
+};
+
+printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
