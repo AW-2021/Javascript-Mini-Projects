@@ -318,3 +318,16 @@ printBookAuthorsCount(
   'Kevin Wayne',
   'Mark Stevenson'
 );
+
+// ASSIGNMENT 5.1
+const hasExamplesInJava = function (obj) {
+  return obj.programmingLanguage === 'Java' || 'no data available';
+};
+
+console.log(hasExamplesInJava(books[0]));
+
+// ASSIGNMENT 5.2
+for (let i = 0; i < books.length; i++) {
+  books[i].onlineContent &&
+    console.log(`${books[i].title} provides online content`);
+}
