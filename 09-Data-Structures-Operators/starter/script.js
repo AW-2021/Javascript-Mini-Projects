@@ -240,7 +240,7 @@ restaurant.orderPizza('spinach');
 
 /**********************************************************************************************************************/
 
-// SHORT CIRUITING
+// SHORT CIRCUITING
 
 // OR operator will return the first truthy value
 console.log('---------- OR ----------');
@@ -281,6 +281,49 @@ restaurant.numGuests = 0;
 const guests = restaurant.numGuests || 10;
 console.log(guests); // -> 10
 
-// Nullish: null and undefined (NOT 0 and '')
+// Nullish: null and undefined ONLY (NOT 0 and '')
 const guestCorrect = restaurant.numGuests ?? 10;
 console.log(guestCorrect); // -> 0
+
+/**********************************************************************************************************************/
+
+// LOGICAL ASSIGNMENT OPERATORS
+const rest1 = {
+  name: 'Capri',
+  numGuests: 20,
+  rating: 0,
+};
+
+const rest2 = {
+  name: 'La Piazza',
+  owner: 'Giovanni Rossi',
+};
+
+// rest1.numGuests = rest1.numGuests || 15;
+// rest2.numGuests = rest2.numGuests || 15;
+
+console.log(rest1);
+console.log(rest2);
+
+// OR Assignment Operator
+rest1.numGuests ||= 10;
+rest2.numGuests ||= 10;
+
+console.log(rest1);
+console.log(rest2);
+
+// Nullish Assignment Operator
+rest1.rating ??= 1;
+rest2.rating ??= 1;
+
+console.log(rest1);
+console.log(rest2);
+
+// AND Assignment Operator
+rest1.owner &&= '<ANONYMOUS>';
+rest2.owner &&= '<ANONYMOUS>';
+
+console.log(rest1);
+console.log(rest2);
+
+/**********************************************************************************************************************/
