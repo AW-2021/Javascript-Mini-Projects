@@ -30,6 +30,7 @@ const restaurant = {
   order: function (starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
+
   // Key names in passed object must match, but order does not have to match
   orderDelivery: function ({
     time = '20:00',
@@ -42,6 +43,17 @@ const restaurant = {
         this.order(mainIndex, starterIndex)[1]
       } will be delivered to ${address} at ${time}`
     );
+  },
+
+  orderPasta: function (ing1, ing2, ing3) {
+    console.log(
+      `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}!`
+    );
+  },
+
+  orderPizza: function (mainIngredient, ...otherIngredients) {
+    console.log(mainIngredient);
+    console.log(otherIngredients);
   },
 };
 
@@ -129,7 +141,7 @@ restaurant.orderDelivery({
 
 /**********************************************************************************************************************/
 
-// SPREAD OPERATOR (...)
+// (...) SPREAD OPERATOR
 const ogArr = [7, 8, 9];
 const badNewArr = [1, 2, ogArr[0], ogArr[1], ogArr[2]];
 
@@ -162,3 +174,65 @@ const letters = [...str, ' ', 'S.'];
 console.log(letters);
 console.log(...str);
 // console.log(`${...str} Henry`); // Cannot use spread operator within template literals
+
+// const ingredients = [
+//   prompt("Let's make pasta! Ingredient 1?"),
+//   prompt("Let's make pasta! Ingredient 3?"),
+//   prompt("Let's make pasta! Ingredient 3?"),
+// ];
+// console.log(ingredients);
+// restaurant.orderPasta(...ingredients);
+
+// (...) Spread Operator on Objects
+const newRestaurant = { foundedIn: 1990, ...restaurant, founder: 'Guiseppe' };
+console.log(newRestaurant);
+
+// Shallow copy (Primitive/ Pass-by-value copy)
+const restaurantCopy = { ...restaurant };
+restaurantCopy.name = 'Ristorante Roma';
+console.log(restaurantCopy.name);
+console.log(restaurant.name);
+
+/**********************************************************************************************************************/
+
+// REST OPERATOR (...)
+
+// 1) Destructuring
+
+// Arrays
+const arr2 = [1, 2, ...[3, 4]]; // Spread Operator => On RIGHT hand side of =
+console.log(arr2);
+
+const [g, h, ...others] = [1, 2, 3, 4, 5]; // Rest Operator => On LEFT hand side of =
+console.log(g, h, others);
+
+const [pizza, , risotto, ...otherFood] = [
+  ...restaurant.mainMenu,
+  ...restaurant.starterMenu,
+];
+console.log(pizza, risotto, otherFood);
+
+// Objects
+const { sat, ...weekdays } = restaurant.openingHours;
+console.log(sat, weekdays);
+
+// 2) Functions
+
+// All parameters passed are collected by REST
+// operator into a new array
+const add = function (...numbers) {
+  let sum = 0;
+  for (let i = 0; i < numbers.length; i++) sum += numbers[i];
+  console.log(sum);
+};
+add(2, 3);
+add(5, 3, 7, 2);
+add(8, 2, 1, 9, 7, 3);
+
+const l = [23, 5, 7];
+add(...l); // Spread operator separates array elements
+
+restaurant.orderPizza('mushrooms', 'cheese', 'olives', 'onions', 'spinach');
+restaurant.orderPizza('spinach');
+
+/**********************************************************************************************************************/
