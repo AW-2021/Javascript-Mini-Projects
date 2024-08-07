@@ -263,7 +263,10 @@ const { language, programmingLanguage = 'unknown' } = books[6];
 console.log(language, programmingLanguage);
 
 // ASSIGNMENT 2.4
-const { title: bookTitle, author: bookAuthor } = books[0];
+let bookTitle = 'unknown';
+let bookAuthor = 'unknown';
+
+({ title: bookTitle, author: bookAuthor } = books[0]);
 console.log(bookTitle, bookAuthor);
 
 // ASSIGNMENT 2.5
@@ -297,11 +300,7 @@ const spellWord = function (str) {
 spellWord('JavaScript');
 
 // ASSIGNMENT 4.1
-const {
-  keywords: [mainKeyword, ...rest],
-} = books[0];
-
-// const [mainKeyword, ...rest] = books[0].keywords;
+const [mainKeyword, ...rest] = books[0].keywords;
 console.log(mainKeyword, rest);
 
 // ASSIGNMENT 4.2
@@ -313,4 +312,9 @@ const printBookAuthorsCount = function (title, ...authors) {
   console.log(`The book "${title}" has ${authors.length} authors`);
 };
 
-printBookAuthorsCount('Algorithms', 'Robert Sedgewick', 'Kevin Wayne');
+printBookAuthorsCount(
+  'Algorithms',
+  'Robert Sedgewick',
+  'Kevin Wayne',
+  'Mark Stevenson'
+);
