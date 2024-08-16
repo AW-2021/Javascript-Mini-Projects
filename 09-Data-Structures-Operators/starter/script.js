@@ -7,6 +7,23 @@ console.log(heading);
 const flights =
   '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
 
+const weekdays = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+
+const openingHours = {
+  [weekdays[3]]: {
+    open: 12,
+    close: 22,
+  },
+  [weekdays[4]]: {
+    open: 11,
+    close: 23,
+  },
+  [weekdays[5]]: {
+    open: 0, // Open 24 hours
+    close: 12 + 12,
+  },
+};
+
 // Data needed for first part of the section
 const restaurant = {
   name: 'Classico Italiano',
@@ -15,32 +32,20 @@ const restaurant = {
   starterMenu: ['Focaccia', 'Bruschetta', 'Garlic Bread', 'Caprese Salad'],
   mainMenu: ['Pizza', 'Pasta', 'Risotto'],
 
-  openingHours: {
-    thu: {
-      open: 12,
-      close: 22,
-    },
-    fri: {
-      open: 11,
-      close: 23,
-    },
-    sat: {
-      open: 0, // Open 24 hours
-      close: 24,
-    },
-  },
+  // ES6 enhanced object literals
+  openingHours,
 
-  order: function (starterIndex, mainIndex) {
+  // order: function (starterIndex, mainIndex) {
+  //   return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
+  // },
+
+  // ES6+ methods
+  order(starterIndex, mainIndex) {
     return [this.starterMenu[starterIndex], this.mainMenu[mainIndex]];
   },
 
   // Key names in passed object must match, but order does not have to match
-  orderDelivery: function ({
-    time = '20:00',
-    mainIndex = 0,
-    starterIndex = 1,
-    address,
-  }) {
+  orderDelivery({ time = '20:00', mainIndex = 0, starterIndex = 1, address }) {
     console.log(
       `Order received! ${this.order(mainIndex, starterIndex)[0]} and ${
         this.order(mainIndex, starterIndex)[1]
@@ -48,13 +53,13 @@ const restaurant = {
     );
   },
 
-  orderPasta: function (ing1, ing2, ing3) {
+  orderPasta(ing1, ing2, ing3) {
     console.log(
       `Here is your delicious pasta with ${ing1}, ${ing2} and ${ing3}!`
     );
   },
 
-  orderPizza: function (mainIngredient, ...otherIngredients) {
+  orderPizza(mainIngredient, ...otherIngredients) {
     console.log(mainIngredient);
     console.log(otherIngredients);
   },
@@ -101,8 +106,8 @@ console.log(p, q, r);
 /**********************************************************************************************************************/
 
 // DESTRUCTURING OBJECTS
-const { name, openingHours, categories } = restaurant;
-console.log(name, openingHours, categories);
+const { name, openingHours: openingHrs, categories } = restaurant;
+console.log(name, openingHrs, categories);
 
 // Giving new variable names to destructured properties
 const {
@@ -216,8 +221,8 @@ const [pizza, , risotto, ...otherFood] = [
 console.log(pizza, risotto, otherFood);
 
 // Objects
-const { sat, ...weekdays } = restaurant.openingHours;
-console.log(sat, weekdays);
+const { sat, ...weekdayss } = restaurant.openingHours;
+console.log(sat, weekdayss);
 
 // 2) Functions
 
@@ -430,6 +435,52 @@ team2 < team1 && console.log('Team 2 is more likely to win');
 console.log(
   '---------------------- CODING CHALLENGE #1 -------------------------'
 );
+
 /**********************************************************************************************************************/
 
-console.log('testing new clone');
+// FOR-OF LOOP
+
+const menu2 = [...restaurant.mainMenu, ...restaurant.starterMenu];
+console.log(menu2);
+
+for (const item of menu2) console.log(item);
+
+for (const [i, el] of menu2.entries()) {
+  console.log(`${i + 1}: ${el}`);
+}
+
+console.log([...menu2.entries()]);
+
+/**********************************************************************************************************************/
+
+// OBJECT LITERALS
+
+/* OpeningHours object added at the top of this file */
+
+/**********************************************************************************************************************/
+
+// OPTIONAL CHAINING (?.)
+
+// Without optional chaining
+if (restaurant.openingHours && restaurant.openingHours.mon)
+  console.log(restaurant.openingHours.mon.open);
+if (restaurant.openingHours && restaurant.openingHours.fri)
+  console.log(restaurant.openingHours.fri.open); // -> 11
+
+// console.log(restaurant.openingHours.mon.open); // ERROR
+
+// WITH Optional Chaining
+console.log(restaurant.openingHours.mon?.open); // -> undefined
+console.log(restaurant.openingHours?.mon?.open); // -> undefined
+console.log(restaurant.openingHours?.fri?.open); // -> 11
+
+// Example
+const days = ['mon', 'tue', 'wed', 'thu', 'fri', 'sat', 'sun'];
+for (const day of days) {
+  const open = restaurant.openingHours[day]?.open ?? 'CLOSED';
+  console.log(`On ${day}, we open at ${open}`);
+}
+
+// Optional Chaining for Methods
+console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
+console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
