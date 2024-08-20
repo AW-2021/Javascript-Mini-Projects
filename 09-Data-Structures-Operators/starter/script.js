@@ -484,3 +484,43 @@ for (const day of days) {
 // Optional Chaining for Methods
 console.log(restaurant.order?.(0, 1) ?? 'Method does not exist');
 console.log(restaurant.orderRisotto?.(0, 1) ?? 'Method does not exist');
+
+// Optional Chaining for Arrays
+const users = [{ name: 'Amy', email: 'hello@amy.com' }];
+
+console.log(users[0]?.name ?? 'Users array empty');
+
+// Equivalent code to above but longer
+if (users.length > 0) {
+  console.log(users[0].name);
+} else {
+  console.log('Users array empty');
+}
+
+/**********************************************************************************************************************/
+
+// OBJECT KEYS
+
+const properties = Object.keys(openingHours);
+console.log(properties);
+
+let openStr = `We are open for ${properties.length} days: `;
+
+for (const day of properties) {
+  openStr += `${day}, `;
+}
+console.log(openStr);
+
+// OBJECT VALUES
+
+const values = Object.values(openingHours);
+console.log(values);
+
+// ENTIRE OBJECT
+
+const entries = Object.entries(openingHours);
+console.log(entries);
+
+for (const [key, { open, close }] of entries) {
+  console.log(`On day ${key}: we open at ${open} and close at ${close}`);
+}
