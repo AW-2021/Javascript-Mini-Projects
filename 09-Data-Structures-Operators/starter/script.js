@@ -625,7 +625,7 @@ const normalEmail = loginEmail.toLowerCase().trim();
 console.log(normalEmail);
 console.log(normalEmail === email);
 
-// Replacing in strings
+// replace and replaceAll Methods
 const priceGB = '288,97£';
 const priceUS = priceGB.replace('£', '$').replace(',', '.');
 console.log(priceUS);
@@ -635,7 +635,7 @@ const announcement =
 console.log(announcement.replace('door', 'gate'));
 console.log(announcement.replaceAll('door', 'gate'));
 
-// REGEX
+// REGEX OPERATIONS
 const regex = /door/gi;
 const announcementNew = announcement.replace(regex, 'gate');
 console.log(announcementNew);
