@@ -277,32 +277,20 @@ buttonElement.innerText = 'CONVERT';
 document.body.append(textAreaEl);
 document.body.append(buttonElement);
 
-const printToConsole = function (arr) {
-  const printArray = [];
-
-  arr.forEach((word, i) => {
-    printArray.push(word.padEnd(20, ' ') + '✅'.repeat(i + 1));
-  });
-
-  console.log(printArray.join('\n'));
-};
-
 const parseInputValue = function (inputStr) {
   const inputArray = inputStr.trim().toLowerCase().split('\n');
   console.log(inputArray);
 
-  const parsedArray = inputArray.map(input => {
+  inputArray.forEach((input, index) => {
     const camelCaseIndex = input.indexOf('_') + 1;
 
-    const parsedInput =
+    const parsedOutput =
       input.slice(0, camelCaseIndex - 1) +
       input[camelCaseIndex].toUpperCase() +
       input.slice(camelCaseIndex + 1);
 
-    return parsedInput.trim();
+    console.log(parsedOutput.trim().padEnd(20) + '✅'.repeat(index + 1));
   });
-
-  printToConsole(parsedArray);
 };
 
 buttonElement.addEventListener('click', e => {
