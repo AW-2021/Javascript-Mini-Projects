@@ -28,3 +28,24 @@ createBooking(
     setting it, so default parameter used instead */
 
 /**********************************************************************************************************************/
+
+const flight = 'LH234';
+const amy = {
+  name: 'Amy Henderson',
+  passport: 2945723091,
+};
+
+const checkIn = function (flightNum, passenger) {
+  flightNum = 'LH999';
+  passenger.name = 'Ms. ' + passenger.name;
+
+  if (passenger.passport === 2945723091) {
+    alert('Checked in');
+  } else {
+    alert('Wrong passport!');
+  }
+};
+
+checkIn(flight, amy);
+console.log(flight);
+console.log(amy);
