@@ -266,25 +266,7 @@ GOOD LUCK 😀
 const textAreaEl = document.createElement('textarea');
 const buttonElement = document.createElement('button');
 
-// Styling DOM body
-document.body.style.flexDirection = 'column';
-
-// Styling DOM textarea
-textAreaEl.style.padding = '0.8em';
-textAreaEl.style.fontFamily = 'sans-serif';
-textAreaEl.style.fontSize = '1em';
-
-// Styling DOM button
-buttonElement.setAttribute('type', 'button');
 buttonElement.innerText = 'CONVERT';
-buttonElement.style.width = '120px';
-buttonElement.style.height = '35px';
-buttonElement.style.fontWeight = 'bold';
-buttonElement.style.color = 'white';
-buttonElement.style.fontSize = '0.9em';
-buttonElement.style.cursor = 'pointer';
-buttonElement.style.background = '#b8235a';
-buttonElement.style.marginTop = '1.9em';
 
 // Appending newly created textarea & button to DOM body
 document.body.append(textAreaEl);
