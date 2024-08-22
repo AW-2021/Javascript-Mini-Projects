@@ -267,19 +267,24 @@ console.log(
   '---------------------- CODING CHALLENGE #4-------------------------'
 );
 
-// Creating button and textarea elements
+// Creating button, textarea and div elements
 const textAreaEl = document.createElement('textarea');
 const buttonElement = document.createElement('button');
+const outputDiv = document.createElement('div');
 
 buttonElement.innerText = 'CONVERT';
 
-// Appending newly created textarea & button to DOM body
+// Appending newly created textarea, button & output div to DOM body
 document.body.append(textAreaEl);
 document.body.append(buttonElement);
+document.body.append(outputDiv);
 
 const parseInputValue = function (inputStr) {
   const inputArray = inputStr.trim().toLowerCase().split('\n');
   console.log(inputArray);
+
+  document.body.style.justifyContent = 'flex-start';
+  outputDiv.textContent = '';
 
   inputArray.forEach((input, index) => {
     const camelCaseIndex = input.indexOf('_') + 1;
@@ -290,6 +295,9 @@ const parseInputValue = function (inputStr) {
       input.slice(camelCaseIndex + 1);
 
     console.log(parsedOutput.trim().padEnd(20) + '✅'.repeat(index + 1));
+    outputDiv.innerHTML += `${
+      parsedOutput.trim().padEnd(20) + '✅'.repeat(index + 1)
+    }<br>`;
   });
 };
 
