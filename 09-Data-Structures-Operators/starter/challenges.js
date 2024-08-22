@@ -262,6 +262,11 @@ Afterwards, test with your own test data!
 GOOD LUCK 😀
 */
 
+console.log('\n');
+console.log(
+  '---------------------- CODING CHALLENGE #4-------------------------'
+);
+
 // Creating button and textarea elements
 const textAreaEl = document.createElement('textarea');
 const buttonElement = document.createElement('button');
@@ -272,10 +277,43 @@ buttonElement.innerText = 'CONVERT';
 document.body.append(textAreaEl);
 document.body.append(buttonElement);
 
-console.log('\n');
-console.log(
-  '---------------------- CODING CHALLENGE #4-------------------------'
-);
+const printToConsole = function (arr) {
+  const printArray = [];
+
+  arr.forEach((word, i) => {
+    printArray.push(word.padEnd(20, ' ') + '✅'.repeat(i + 1));
+  });
+
+  console.log(printArray.join('\n'));
+};
+
+const parseInputValue = function (inputStr) {
+  const inputArray = inputStr.trim().toLowerCase().split('\n');
+  console.log(inputArray);
+
+  const parsedArray = inputArray.map(input => {
+    const camelCaseIndex = input.indexOf('_') + 1;
+
+    const parsedInput =
+      input.slice(0, camelCaseIndex - 1) +
+      input[camelCaseIndex].toUpperCase() +
+      input.slice(camelCaseIndex + 1);
+
+    return parsedInput.trim();
+  });
+
+  printToConsole(parsedArray);
+};
+
+buttonElement.addEventListener('click', e => {
+  e.preventDefault();
+
+  const inputValue = textAreaEl.value;
+  console.log(inputValue);
+  inputValue !== '' ? parseInputValue(inputValue) : alert('Input empty!');
+
+  textAreaEl.value = '';
+});
 
 console.log('\n');
 console.log(
