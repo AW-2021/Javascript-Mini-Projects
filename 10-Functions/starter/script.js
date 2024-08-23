@@ -119,3 +119,105 @@ const greetArrow = greeting => name => console.log(`${greeting} ${name}`);
 greetArrow('Hello')('Amy');
 
 /**********************************************************************************************************************/
+
+// CALL AND APPLY METHODS
+
+const lufthansa = {
+  airline: 'Lufthansa',
+  iataCode: 'LH',
+  bookings: [],
+
+  //book: function ()
+  book(flightNum, name) {
+    console.log(
+      `${name} booked a seat on ${this.airline} flight ${this.iataCode}${flightNum}`
+    );
+    this.bookings.push({ flight: `${this.iataCode}${flightNum}`, name });
+  },
+};
+
+lufthansa.book(244, 'Jane Watson');
+lufthansa.book(631, 'Joe Brown');
+console.log(lufthansa);
+
+const eurowings = {
+  airline: 'Eurowings',
+  iataCode: 'EW',
+  bookings: [],
+};
+
+const book = lufthansa.book; // book is a regular (external) function, so 'this' keyword is undefined in it
+
+// Does NOT work
+// book(23, 'Sarah Williams');
+
+// Call Method (object, arg1, arg2, arg3, ...)
+book.call(eurowings, 25, 'Sarah Williams');
+console.log(eurowings);
+
+book.call(lufthansa, 239, 'Mary Cooper');
+
+const swiss = {
+  airline: 'Swiss Air Lines',
+  iataCode: 'LX',
+  bookings: [],
+};
+
+book.call(swiss, '507', 'Amy Henderson');
+console.log(swiss);
+
+// Apply Method (object, array of arguments)
+const flightData = [321, 'George Cooper'];
+book.apply(swiss, flightData);
+
+book.call(swiss, ...flightData);
+console.log(swiss);
+
+/**********************************************************************************************************************/
+
+// BIND METHOD
+
+const bookEW = book.bind(eurowings);
+const bookLH = book.bind(lufthansa);
+const bookLX = book.bind(swiss);
+
+bookEW(25, 'Steven Williams');
+
+const bookEW62 = book.bind(eurowings, 62);
+bookEW62('Jonas Anderson');
+bookEW62('Martha Cooper');
+
+// With Event Listeners
+lufthansa.planes = 300;
+lufthansa.buyPlane = function () {
+  console.log(this); // -> <button></button>
+
+  this.planes++;
+  console.log(this.planes);
+};
+
+// In an event handler function, this keyword always points to element
+// on which that handler is attached to
+document
+  .querySelector('.buy')
+  .addEventListener('click', lufthansa.buyPlane.bind(lufthansa));
+
+// Partial application
+
+const addTax = (rate, value) => value + value * rate;
+console.log(addTax(0.1, 200));
+
+const addVAT = addTax.bind(null, 0.23);
+console.log(addVAT(100));
+console.log(addVAT(23));
+
+const addTaxRate = function (rate) {
+  return function (value) {
+    return value + value * rate;
+  };
+};
+const addVAT2 = addTaxRate(0.23);
+console.log(addVAT2(100));
+console.log(addVAT2(23));
+
+/**********************************************************************************************************************/
