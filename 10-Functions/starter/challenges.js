@@ -1,4 +1,4 @@
-/*********************  CHALLENGES  ***********************/
+/**************************  CHALLENGES  **************************/
 
 'use strict';
 
@@ -27,7 +27,7 @@ Here are your tasks:
 
 HINT: Use many of the tools you learned about in this and the last section 😉
 
-BONUS: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! So what shoud the this keyword look like in this situation?
+BONUS: Use the 'displayResults' method to display the 2 arrays in the test data. Use both the 'array' and the 'string' option. Do NOT put the arrays in the poll object! So what should the this keyword look like in this situation?
 
 BONUS TEST DATA 1: [5, 2, 3]
 BONUS TEST DATA 2: [1, 5, 3, 9, 6, 1]
@@ -40,4 +40,52 @@ const poll = {
   options: ['0: JavaScript', '1: Python', '2: Rust', '3: C++'],
   // This generates [0, 0, 0, 0]. More in the next section 😃
   answers: new Array(4).fill(0),
+
+  registerNewAnswer() {
+    const pollAns = parseInt(
+      prompt(
+        `${this.question}\n${this.options.join('\n')}\n(Write option number)`
+      )
+    );
+
+    pollAns >= 0 &&
+      pollAns < this.answers.length &&
+      pollAns !== '' &&
+      pollAns !== NaN &&
+      this.answers[pollAns]++;
+
+    this.displayMethod();
+    this.displayMethod('string');
+  },
+
+  displayMethod(type = 'array') {
+    switch (type) {
+      case 'string':
+        console.log(`Poll results are ${this.answers.join(', ')}`);
+        break;
+      case 'array':
+        console.log(this.answers);
+        break;
+    }
+  },
 };
+
+document
+  .querySelector('.poll')
+  .addEventListener('click', poll.registerNewAnswer.bind(poll));
+
+//  BONUS
+const newArray1 = {
+  answers: [5, 2, 3],
+};
+
+const newArray2 = {
+  answers: [1, 5, 3, 9, 6, 1],
+};
+
+const displayFunction1 = poll.displayMethod.bind(newArray1);
+const displayFunction2 = poll.displayMethod.bind(newArray2);
+displayFunction1('array');
+displayFunction2('string');
+
+/**********************************************************************************************************************/
