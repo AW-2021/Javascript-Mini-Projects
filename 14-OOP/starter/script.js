@@ -77,3 +77,56 @@ console.log(arr.unique());
 
 const h1 = document.querySelector('h1');
 console.dir(x => x + 1);
+
+/**********************************************************************************************************************/
+
+// ES6 CLASSES
+
+// Class expression
+// const PersonCl = class {};
+
+// Class declaration
+class PersonCl {
+  constructor(firstName, birthYear) {
+    this.firstName = firstName;
+    this.birthYear = birthYear;
+  }
+
+  // Class methods are added to .prototype property of the class
+  // All objects of this class created will inherit PersonCl.prototype
+  calcAge() {
+    console.log(2024 - this.birthYear);
+  }
+
+  greet() {
+    console.log(`Hey ${this.firstName}!`);
+  }
+}
+
+const jess = new PersonCl('Jess', 1996);
+console.log(jess);
+jess.calcAge();
+
+console.log(jess.__proto__ === PersonCl.prototype); // -> true
+
+// Manually adding a method to the prototype of class
+PersonCl.prototype.greet2 = function () {
+  console.log(`Hey ${this.firstName}`);
+};
+jess.greet();
+jess.greet2();
+
+// 1. Classes are NOT hoisted
+// 2. Classes are first-class citizens (since they are a special type of a function)
+// 3. Classes are executed in 'strict' mode
+
+/**********************************************************************************************************************/
+
+// SETTERS AND GETTERS
+
+const account = {
+  owner: 'Ella',
+  movements: [200, 530, 120, 300],
+
+  get latest() {},
+};
